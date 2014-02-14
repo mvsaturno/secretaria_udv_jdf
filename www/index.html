@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<head>
+	<title>Secretaria JDF</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/themes/UDV.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.0.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css" />
+
+        <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery.mobile-1.4.0.min.js"></script>
+        <script src="js/main.js"></script>
+		<script src="js/modernizr.custom.26858.js"></script>
+
+</head>
+<body>
+	<!-- Main Menu -->
+	<div data-role="page" id="main_menu">
+		<div data-role="header"> <h1>Secretaria UDV - Jardim das Flores</h1> </div>
+		<div data-role="content" id="main_menu_cnt">
+			<div data-role="control-group" data-type="horizontal">
+				<a data-role="button" data-inline="true" href="#ua_menu">Unidades Administrativas</a>
+				<a data-role="button" data-inline="true" href="#menu_disc">Discipulos</a>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Menu das UAs-->
+	<div data-role="page" id="ua_menu">
+
+		<div data-role="header"> <a href="#" data-rel="back">Voltar</a> <h1>Unidades Administrativas</h1> </div>
+
+		<div data-role="content">
+			<div data-role="control-group" data-type="horizontal">
+				<a href="#nova_ua" data-inline="true" data-role="button">Nova UA</a>
+				
+				<div id="lista_uas">
+					<ul id='lista_nucleos' data-role='list-view' data-inset='true'>
+
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<!-- Menu dos discipulos -->
+	<div data-role="page" id="menu_disc">
+
+		<div data-role="header"> <a href="#" data-rel="back">Voltar</a> <h1>Discipulos</h1> </div>
+
+		<div data-role="content">
+		
+			<div data-role="control-group" data-type="horizontal">
+				<a href="#novo_disc" data-inline="true" data-role="button">Novo Discipulo</a>
+				<!-- Rever isso aqui depois, talvez já listar de e dar a opção de usar um radio button pra selecionar e editar ou remover-->
+				<a href="#novo_disc" data-inline="true" data-role="button">Editar Discipulo</a>
+				<a href="#novo_disc" data-inline="true" data-role="button">Remover Discipulo</a>
+			</div>
+
+		</div>
+	</div>
+
+
+		<!-- Form pra cadastrar UAs -->
+		<div data-role="page" id="nova_ua" >
+			<div data-role="header">
+				<a href="#" data-rel="back">Voltar</a>
+				<h1>Cadastrar UA:</h1>
+			</div> <!-- Header -->
+			<div data-role="content" >
+				<form method="POST" id="form_ua">
+
+					<label for="grau_ua">Grau da Unidade Administrativa</label>
+					<select name="grau_ua">
+						<option value="ext">Extensão</option>
+						<option value="dav">DAV</option>
+						<option value="nucleo">Núcleo</option>
+					</select>
+					<label for="nome">Nome do Núcleo/UA</label><input type="text" name="nome" id="nome" />
+					<label for="representante">Nome do M.Representante</label><input type="text" name="representante" id="representante" />
+					<!-- <label for="ua_sist">Essa UA é a principal pra este sistema?</label> <input type="checkbox" name="ua_sist" value="ua_sist" id="ua_sist" /> -->
+					<!-- Aqui vou ter que testar se já existe outra UA marcada com essa opção, antes de persistir no banco -->
+					<input type="hidden" name="uid" id="uid" value="" />
+					<input type="hidden" name="crud" id="crud" value="inserir" />
+					<input type="submit" value="Salvar"/>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- Form para cadastrar discipulos -->
+		<div data-role="page" id="novo_disc">
+			<div data-role="header"> <a href="#" data-rel="back">Voltar</a> <h1>Cadastrar Discipulo</h1> </div>
+			<div data-role="content">
+				<form action="" method="POST">
+					<label for="nome">Nome Completo</label><input type="text" id="nome" name="nome" />
+					<label for="endereco">Endereço Completo (rua, número e complemento)</label><input type="text" id="endereco" name="endereco" />
+					<label for="bairro">Bairro</label><input type="text" id="bairro" name="bairro" />
+					<label for="bairro">CEP</label><input type="text" id="cep" name="cep" />
+					<label for="cidade">Cidade</label><input type="text" id="cidade" name="cidade" />
+					
+					<label for="estado">Estado</label>
+					<select name="estado">
+					    <option value="AC">Acre</option>
+					    <option value="AL">Alagoas</option>
+					    <option value="AM">Amazonas</option>
+					    <option value="AP">Amapá</option>
+					    <option value="BA">Bahia</option>
+					    <option value="CE">Ceará</option>
+					    <option value="DF">Distrito Federal</option>
+					    <option value="ES">Espirito Santo</option>
+					    <option value="GO">Goiás</option>
+					    <option value="MA">Maranhão</option>
+					    <option value="MG">Minas Gerais</option>
+					    <option value="MS">Mato Grosso do Sul</option>
+					    <option value="MT">Mato Grosso</option>
+					    <option value="PA">Pará</option>
+					    <option value="PB">Paraíba</option>
+					    <option value="PE">Pernambuco</option>
+					    <option value="PI">Piauí</option>
+					    <option value="PR">Paraná</option>
+					    <option value="RJ">Rio de Janeiro</option>
+					    <option value="RN">Rio Grande do Norte</option>
+					    <option value="RS">Rio Grande do Sul</option>
+					    <option value="RO">Rondônia</option>
+					    <option value="RR">Roraima</option>
+					    <option value="SC">Santa Catarina</option>
+					    <option value="SE">Sergipe</option>
+					    <option value="SP">São Paulo</option>
+					    <option value="TO">Tocantins</option>
+					</select>
+
+					<label for="telefone">Telefone Residencial</label> <input type="text" name="telefone" id="telefone" />
+					<label for="telefone1">Telefone Comercial</label> <input type="text" name="telefone1" id="telefone1" />
+					<label for="celular">Telefone Celular</label> <input type="text" name="celular" id="celular" />
+					<label for="operadora">Operadora</label>
+					<select name="operadora">
+						<option value="claro">Claro</option>
+						<option value="oi">Oi</option>
+						<option value="tim">TIM</option>
+						<option value="vivo">Vivo</option>
+						<option value="outra">Outra</option>
+					</select>
+					<label for="email">E-mail</label> <input type="text" name="email" id="email" />
+					<label for="skype">Nome no Skype</label> <input type="text" name="skype" id="skype" />
+					<label for="nascimento">Data de Nascimento</label> <input type="date" name="nascimento" id="nascimento" />
+					<label for="natural">Naturalidade</label> <input type="text" name="natural" id="natural" />
+					<label for="tipo_sang">Tipo Sanguíneo</label>
+					<select name="tipo_sang">
+						<option value="a+">A+</option>
+						<option value="a-">A-</option>
+						<option value="b+">B+</option>
+						<option value="b-">B-</option>
+						<option value="ab+">AB+</option>
+						<option value="ab-">AB-</option>
+						<option value="o+">0+</option>
+						<option value="o-">0-</option>
+					</select>
+
+					<label for="estado_civil">Estado Civil</label>
+					<select name="estado_civil">
+						<option value="solteiro">Solteiro(a)</option>
+						<option value="casado">Casado</option>
+						<option value="uniao_est">União Estavel</option>
+						<option value="divorciado">Divorciado(a)</option>
+						<option value="viuvo">Viuvo(a)</option>
+					</select>
+
+					<label for="rg">RG</label> <input type="text" name="rg" id="rg" />
+					<label for="cpf">CPF</label> <input type="text" name="cpf" id="cpf" />
+
+					<label for="escolaridade">Escolaridade</label>
+					<select name="escolaridade" id="escolaridade">
+						<option value="iletrado">Não frequentou escola</option>
+						<option value="fundamental">Fundamental</option>
+						<option value="nivel_medio">Nivel Medio</option>
+						<option value="sup_inc">Superior Incompleto</option>
+						<option value="sup_comp">Superior Completo</option>
+						<option value="pos_grad">Pós Graduação</option>
+						<option value="mestrado">Mestrado</option>
+						<option value="doutorado">Doutorado</option>
+						<option value="phd">PHD</option>
+					</select>
+
+					<div id="div_curso" hidden="hidden">
+					<label for="curso">Nome do curso superior</label> <input type="text" name="curso" id="curso" />
+					</div>
+
+					<div id="div_esp" hidden="hidden">
+					<label for="esp">Area/Nome da especialização</label> <input type="text" name="esp" id="esp" />
+					</div>
+
+					<label for="transf">Sócio Recebido em Transferência?</label><input type="checkbox" value="transf" name="transf" id="transf">
+					<div id="ua_transf" hidden="hidden">
+					<label for="ua_transf">Nucleo Anterior</label><input type="text" value="" id="ua_transf_input" name="ua_transf">
+					</div>
+
+					<!-- HISTORICO DO ADVENTICIO DESTE IRMAO, INCLUIR NO FORMULARIO!-->
+
+					<!-- HISTORICO DE EVENTOS (ADVENTICIO, CONVOCACAO, AFASTAMENTO, ADVERTENCIA, TRANSFERENCIA)-->
+
+					<!-- HISTORICO DE CARGOS DE DIRETORIA E PERIODOS: DATA INICIAL, FINAL E TIPO, ABRANGÊNCIA (LOCAL, REGIONAL, GERAL) -->
+
+					<input type="hidden" name="tag" value="novo_discipulo" />
+					<input type="submit" value="Salvar"/>
+				</form>
+			</div>
+		</div>
+
+</body>
+</html>
