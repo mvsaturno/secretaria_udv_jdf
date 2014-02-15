@@ -130,7 +130,7 @@ $(document).ready(function() {
 					console.log(res);
 					var html_code = "<ul id='lista_nucleos' data-role='listview' data-inset='true'>"
 					$.each(res, function(k,v){
-						html_code += "<li>" + v.nome + "</li>";
+						html_code += "<li><b>" + v.nome_ua + "</b> (" + v.cidade_ua + "-" + v.estado_ua + ")</li>";
 					});
 					html_code += "</ul>";
 					// $(html_code).appendTo('#lista_uas').trigger('create');
