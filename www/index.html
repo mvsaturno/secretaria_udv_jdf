@@ -64,7 +64,7 @@
 				data-transition="slide"
 				data-direction="reverse">
 			</input>
-			<a href="#" data-rel="back">Voltar</a> <h1>Unidades Administrativas</h1>
+			<h1>Unidades Administrativas</h1>
 		</div>
 
 		<div data-role="content">
@@ -93,7 +93,7 @@
 				data-transition="slide"
 				data-direction="reverse">
 			</input>
-			<a href="#" data-rel="back">Voltar</a> <h1>Discipulos</h1>
+			<h1>Discipulos</h1>
 		</div>
 
 		<div data-role="content">
@@ -120,8 +120,7 @@
 				data-transition="slide"
 				data-direction="reverse">
 			</input>
-				<a href="#" data-rel="back">Voltar</a>
-				<h1>Cadastrar UA:</h1>
+								<h1>Cadastrar UA:</h1>
 			</div> <!-- Header -->
 			<div data-role="content" >
 				<form method="POST" id="form_ua">
@@ -132,8 +131,39 @@
 						<option value="dav">DAV</option>
 						<option value="nucleo">Núcleo</option>
 					</select>
-					<label for="nome">Nome do Núcleo/UA</label><input type="text" name="nome" id="nome" />
-					<label for="representante">Nome do M.Representante</label><input type="text" name="representante" id="representante" />
+					<label for="nome_ua">Nome do Núcleo/UA</label><input type="text" name="nome_ua" id="nome_ua" />
+					<label for="local_ua">Cidade</label> <input type="text" name="cidade_ua" id="cidade_ua">
+					<label for="estado_ua">Estado</label>
+					<select name="estado_ua">
+					    <option value="AC">Acre</option>
+					    <option value="AL">Alagoas</option>
+					    <option value="AM">Amazonas</option>
+					    <option value="AP">Amapá</option>
+					    <option value="BA">Bahia</option>
+					    <option value="CE">Ceará</option>
+					    <option value="DF">Distrito Federal</option>
+					    <option value="ES">Espirito Santo</option>
+					    <option value="GO">Goiás</option>
+					    <option value="MA">Maranhão</option>
+					    <option value="MG">Minas Gerais</option>
+					    <option value="MS">Mato Grosso do Sul</option>
+					    <option value="MT">Mato Grosso</option>
+					    <option value="PA">Pará</option>
+					    <option value="PB">Paraíba</option>
+					    <option value="PE">Pernambuco</option>
+					    <option value="PI">Piauí</option>
+					    <option value="PR">Paraná</option>
+					    <option value="RJ">Rio de Janeiro</option>
+					    <option value="RN">Rio Grande do Norte</option>
+					    <option value="RS">Rio Grande do Sul</option>
+					    <option value="RO">Rondônia</option>
+					    <option value="RR">Roraima</option>
+					    <option value="SC">Santa Catarina</option>
+					    <option value="SE">Sergipe</option>
+					    <option value="SP">São Paulo</option>
+					    <option value="TO">Tocantins</option>
+					</select>
+					<label for="representante_ua">Nome do M.Representante</label><input type="text" name="representante" id="representante" />
 					<!-- <label for="ua_sist">Essa UA é a principal pra este sistema?</label> <input type="checkbox" name="ua_sist" value="ua_sist" id="ua_sist" /> -->
 					<!-- Aqui vou ter que testar se já existe outra UA marcada com essa opção, antes de persistir no banco -->
 					<input type="hidden" name="uid" id="uid" value="" />
@@ -155,7 +185,7 @@
 				data-transition="slide"
 				data-direction="reverse">
 			</input>
-				<a href="#" data-rel="back">Voltar</a> <h1>Cadastrar Discipulo</h1>
+				<h1>Cadastrar Discipulo</h1>
 			</div>
 			<div data-role="content">
 				<form action="" method="POST">
