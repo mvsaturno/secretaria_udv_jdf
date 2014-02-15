@@ -141,5 +141,10 @@ $(document).ready(function() {
 			console.log(opts);
 			$.ajax(opts);
 	});
+
+	$(document).on("pageinit", "#main_menu", function(){
+		console.log('carregou main_menu !');
+		$('#globalpanel').panel();
+	});
 	
 });
