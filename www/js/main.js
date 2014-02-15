@@ -119,7 +119,7 @@ $(document).ready(function() {
 	//Listar UAs
 
 	$(document).on("pageinit", "#ua_menu", function(){
-		// console.log('carregou UA Menu!');
+		console.log('carregou UA Menu!');
 		data = {};
 		var opts = {
 				type: 'POST',
@@ -141,5 +141,5 @@ $(document).ready(function() {
 			console.log(opts);
 			$.ajax(opts);
 	});
-
+	
 });

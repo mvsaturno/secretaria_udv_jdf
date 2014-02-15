@@ -9,19 +9,40 @@
 
         <link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/themes/UDV.min.css" />
-		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.0.min.css" />
-		<link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css" />
-
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.1.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css" />
+        <style type="text/css">
+            .ui-panel-dismiss{display:none;}
+            #main_menu, #ua_menu{margin-left:17em;}
+        </style>
         <script src="js/jquery-1.11.0.min.js"></script>
-        <script src="js/jquery.mobile-1.4.0.min.js"></script>
+	<script src="js/init.js"></script>
+        <script src="js/jquery.mobile-1.4.1.min.js"></script>
         <script src="js/main.js"></script>
 		<script src="js/modernizr.custom.26858.js"></script>
 
 </head>
 <body>
+	
+	<div data-role="panel" data-display="reveal" id="globalpanel">
+		<h1>globalpanel</h1>
+		<a href="#main_menu">#main_menu</a><br />
+		<a href="#ua_menu">#ua_menu</a>
+	</div>
+    
 	<!-- Main Menu -->
-	<div data-role="page" id="main_menu">
-		<div data-role="header"> <h1>Secretaria UDV - Jardim das Flores</h1> </div>
+	<div data-role="page" id="main_menu" data-animate="false" data-transition="none">
+		<div data-role="header" data-id="main-header" data-position="fixed" data-tap-toggle="false">
+			<input type="button" data-id="navbtn"
+				data-role="button"
+				data-icon="bars"
+				data-iconpos="notext"
+				data-inline="true"
+				data-transition="slide"
+				data-direction="reverse">
+			</input>
+			<h1>Secretaria UDV - Jardim das Flores</h1>
+		</div>
 		<div data-role="content" id="main_menu_cnt">
 			<div data-role="control-group" data-type="horizontal">
 				<a data-role="button" data-inline="true" href="#ua_menu">Unidades Administrativas</a>
@@ -32,9 +53,19 @@
 
 
 	<!-- Menu das UAs-->
-	<div data-role="page" id="ua_menu">
+	<div data-role="page" id="ua_menu" data-animate="false" data-transition="none">
 
-		<div data-role="header"> <a href="#" data-rel="back">Voltar</a> <h1>Unidades Administrativas</h1> </div>
+		<div data-role="header" data-id="main-header" data-position="fixed">
+			<input type="button" data-id="navbtn"
+				data-role="button"
+				data-icon="bars"
+				data-iconpos="notext"
+				data-inline="true"
+				data-transition="slide"
+				data-direction="reverse">
+			</input>
+			<a href="#" data-rel="back">Voltar</a> <h1>Unidades Administrativas</h1>
+		</div>
 
 		<div data-role="content">
 			<div data-role="control-group" data-type="horizontal">
@@ -53,7 +84,17 @@
 	<!-- Menu dos discipulos -->
 	<div data-role="page" id="menu_disc">
 
-		<div data-role="header"> <a href="#" data-rel="back">Voltar</a> <h1>Discipulos</h1> </div>
+		<div data-role="header" data-id="main-header" data-position="fixed">
+			<input type="button" data-id="navbtn"
+				data-role="button"
+				data-icon="bars"
+				data-iconpos="notext"
+				data-inline="true"
+				data-transition="slide"
+				data-direction="reverse">
+			</input>
+			<a href="#" data-rel="back">Voltar</a> <h1>Discipulos</h1>
+		</div>
 
 		<div data-role="content">
 		
@@ -70,7 +111,15 @@
 
 		<!-- Form pra cadastrar UAs -->
 		<div data-role="page" id="nova_ua" >
-			<div data-role="header">
+			<div data-role="header" data-id="main-header" data-position="fixed">
+			<input type="button" data-id="navbtn"
+				data-role="button"
+				data-icon="bars"
+				data-iconpos="notext"
+				data-inline="true"
+				data-transition="slide"
+				data-direction="reverse">
+			</input>
 				<a href="#" data-rel="back">Voltar</a>
 				<h1>Cadastrar UA:</h1>
 			</div> <!-- Header -->
@@ -97,7 +146,17 @@
 
 		<!-- Form para cadastrar discipulos -->
 		<div data-role="page" id="novo_disc">
-			<div data-role="header"> <a href="#" data-rel="back">Voltar</a> <h1>Cadastrar Discipulo</h1> </div>
+			<div data-role="header" data-id="main-header" data-position="fixed">
+			<input type="button" data-id="navbtn"
+				data-role="button"
+				data-icon="bars"
+				data-iconpos="notext"
+				data-inline="true"
+				data-transition="slide"
+				data-direction="reverse">
+			</input>
+				<a href="#" data-rel="back">Voltar</a> <h1>Cadastrar Discipulo</h1>
+			</div>
 			<div data-role="content">
 				<form action="" method="POST">
 					<label for="nome">Nome Completo</label><input type="text" id="nome" name="nome" />
