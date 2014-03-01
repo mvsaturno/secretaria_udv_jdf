@@ -26,8 +26,19 @@
 	
 	<div data-role="panel" data-display="reveal" id="globalpanel">
 		<h1>globalpanel</h1>
-		<a href="#main_menu">#main_menu</a><br />
-		<a href="#ua_menu">#ua_menu</a>
+		<ul data-role="listview">
+			<li><a href="#main_menu">#main_menu</a></li>
+			<li><a href="#ua_menu">#ua_menu</a></li>
+			<li>
+				<a href="#country_menu">#country_menu</a>
+			</li>
+			<li>
+				<a href="#country_menu">#uf_menu</a>
+			</li>
+			<li>
+				<a href="#country_menu">#regioes_menu</a>
+			</li>
+		</ul>
 	</div>
     
 	<!-- Main Menu -->
@@ -77,6 +88,41 @@
 					</ul>
 				</div>
 				
+			</div>
+		</div>
+	</div>
+	
+	<!-- Menu das países, estados, regiões-->
+	<div data-role="page" id="country_menu" data-animate="false" data-transition="none" data-tap-toggle="false">
+
+		<div data-role="header" data-id="main-header" data-position="fixed" data-tap-toggle="false">
+			<input type="button" data-id="navbtn"
+				data-role="button"
+				data-icon="bars"
+				data-iconpos="notext"
+				data-inline="true"
+				data-transition="slide"
+				data-direction="reverse">
+			</input>
+			<h1>Países</h1>
+		</div>
+
+		<div data-role="content">
+			<div data-role="control-group" data-type="horizontal">
+				<h1>Países</h1>
+				
+				<label for="country_code">Código (ISO 3166 alpha 2):</label>
+				<input id="country_code" name="country_code"></input>
+				<label for="country_name">País:</label>
+				<input id="country_name" name="country_name"></input>
+				<button class="ui-btn" id="country_submit" name="country_submit">Salvar</button>
+				<ul data-role="listview">
+					<li>País 1
+						<button class="ui-btn" id="country_edit" name="country_edit" data-type="button" data-inline="true">Editar</button>
+						<button class="ui-btn" id="country_delete" name="country_delete" data-type="button" data-inline="true">Deletar</button>
+					</li>
+
+				</ul>
 			</div>
 		</div>
 	</div>

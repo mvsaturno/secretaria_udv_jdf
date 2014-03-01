@@ -42,6 +42,9 @@ $(function(){
         console.log('init.js loaded.');
         
 	$('#globalpanel').panel();
+	$('#globalpanel').trigger('pagecreate');
+	console.log($('#globalpanel').find('[data-role=listview]'));
+	$('#globalpanel').find('[data-role=listview]').listview();
 	
 	$('input[data-id=navbtn]').on("click", function () {
                 console.log('navbtn clicked');
