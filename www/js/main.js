@@ -37,8 +37,19 @@ function Grau( discipulo, evento, grau ){
 
 /*Jquery:*/
 
-$(document).ready(function() {
+$(function(){
 
+        console.log('init.js loaded.');
+        
+	$('#globalpanel').panel();
+	
+	$('input[data-id=navbtn]').on("click", function () {
+                console.log('navbtn clicked');
+                $('#globalpanel').panel('toggle');
+        });
+
+	
+	
 	/*Funções da parte de cadastro de discipulo:*/
 	$("#escolaridade").change(function(){
 		//alert('opcao selecionada:' + $("#escolaridade option:selected").val());
@@ -117,34 +128,34 @@ $(document).ready(function() {
 		});
 
 	//Listar UAs
-
-	$(document).on("pageinit", "#ua_menu", function(){
-		console.log('carregou UA Menu!');
-		data = {};
-		var opts = {
-				type: 'POST',
-				url:'/app/ua/listar',
-				dataType:'json',
-				data: data,
-				success: function(res) {
-					console.log(res);
-					var html_code = "<ul id='lista_nucleos' data-role='listview' data-inset='true'>"
-					$.each(res, function(k,v){
-						html_code += "<li><b>" + v.nome_ua + "</b> (" + v.cidade_ua + "-" + v.estado_ua + ")</li>";
-					});
-					html_code += "</ul>";
-					// $(html_code).appendTo('#lista_uas').trigger('create');
-					$('#lista_uas').append(html_code);
-					$('#lista_uas').trigger('create');
-				}
-			}
-			console.log(opts);
-			$.ajax(opts);
-	});
-
-	$(document).on("pageinit", "#main_menu", function(){
-		console.log('carregou main_menu !');
-		$('#globalpanel').panel();
-	});
 	
+});
+
+$(document).on("pageinit", "#ua_menu", function(){
+	console.log('carregou UA Menu!');
+	data = {};
+	var opts = {
+			type: 'POST',
+			url:'/app/ua/listar',
+			dataType:'json',
+			data: data,
+			success: function(res) {
+				console.log(res);
+				var html_code = "<ul id='lista_nucleos' data-role='listview' data-inset='true'>"
+				$.each(res, function(k,v){
+					html_code += "<li><b>" + v.nome_ua + "</b> (" + v.cidade_ua + "-" + v.estado_ua + ")</li>";
+				});
+				html_code += "</ul>";
+				// $(html_code).appendTo('#lista_uas').trigger('create');
+				$('#lista_uas').append(html_code);
+				$('#lista_uas').trigger('create');
+			}
+		}
+		console.log(opts);
+		$.ajax(opts);
+});
+
+$(document).on("pageinit", "#main_menu", function(){
+	console.log('carregou main_menu !');
+	//$('#globalpanel').panel();
 });
