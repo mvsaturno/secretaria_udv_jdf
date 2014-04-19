@@ -60,6 +60,21 @@ class PaisHandler(webapp2.RequestHandler):
     	action = self.request.url.split('/')[-1]
     	logging.info(action)
     	res = ""
+	
+	if action == 'inserir_ancestral' :
+    		logging.info(u'Inserção')
+    		obj = pais()
+    		pdata = getPostData(self.request.POST.items())
+		logging.info(pdata)
+		data = {'nome': pdata[u'pais_nome']}
+		pais_key = pdata.pop(u'pais_key')
+		logging.info(pais_key)
+		logging.info(data)
+		key = ndb.Key('pais', '0')
+		obj.key = key
+    		CrudHandler(obj, data)
+    		res = 'objeto inserido!'
+	
     	if action == 'inserir' :
     		logging.info(u'Inserção')
     		obj = pais()
@@ -76,9 +91,9 @@ class PaisHandler(webapp2.RequestHandler):
 
     	elif action == 'listar':
     		# logging.info('Listagem')
-    		ua = nucleo.query()
+    		db_res = pais.query()
     		aux = []
-    		for item in ua.fetch():
+    		for item in db_res.fetch():
     			d = item.to_dict()
     			d['uid'] = item.key.id()
     			aux.append(d)

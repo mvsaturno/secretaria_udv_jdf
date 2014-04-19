@@ -146,7 +146,7 @@ $(function(){
 
 			var opts = {
 				type: 'POST',
-				url:'/app/pais/inserir',
+				url:'/app/pais/inserir_ancestral',
 				dataType:'json',
 				data: data
 			}
@@ -176,6 +176,30 @@ $(document).on("pageinit", "#ua_menu", function(){
 				// $(html_code).appendTo('#lista_uas').trigger('create');
 				$('#lista_uas').append(html_code);
 				$('#lista_uas').trigger('create');
+			}
+		}
+		console.log(opts);
+		$.ajax(opts);
+});
+
+$(document).on("pageinit", "#country_menu", function(){
+	console.log('carregou #country_menu!');
+	data = {};
+	var opts = {
+			type: 'POST',
+			url:'/app/pais/listar',
+			dataType:'json',
+			data: data,
+			success: function(res) {
+				console.log(res);
+				var html_code = "<ul id='lista_paises' data-role='listview' data-inset='true'>"
+				$.each(res, function(k,v){
+					html_code += "<li><b>" + v.nome_ua + "</b> (" + v.cidade_ua + "-" + v.estado_ua + ")</li>";
+				});
+				html_code += "</ul>";
+				// $(html_code).appendTo('#lista_uas').trigger('create');
+				$('#lista_paises').append(html_code);
+				$('#lista_paises').trigger('create');
 			}
 		}
 		console.log(opts);
