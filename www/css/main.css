@@ -1,3 +1,10 @@
 #div_curso, #div_esp{
 	/*display:hidden;*/
 }
+.ui-table tr td {
+    vertical-align:middle;
+}
+.list-item tr td {
+    border-top:1px solid silver;
+    border-bottom:1px solid silver;
+}

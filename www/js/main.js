@@ -39,17 +39,17 @@ function Grau( discipulo, evento, grau ){
 
 $(function(){
 
-        console.log('init.js loaded.');
-        
+	console.log('init.js loaded.');
+	
 	$('#globalpanel').panel();
 	$('#globalpanel').trigger('pagecreate');
 	console.log($('#globalpanel').find('[data-role=listview]'));
 	$('#globalpanel').find('[data-role=listview]').listview();
 	
 	$('input[data-id=navbtn]').on("click", function () {
-                console.log('navbtn clicked');
-                $('#globalpanel').panel('toggle');
-        });
+		console.log('navbtn clicked');
+		$('#globalpanel').panel('toggle');
+	});
 
 	
 	
@@ -225,10 +225,13 @@ $(document).on("pageinit", "#country_menu", function(){
 					console.log(k);
 					console.log(v);
 					if (v.uid != 0) {
-						html_code += "<li><b>" + v.uid + "</b>: " + v.nome
-						+ '<button class="ui-btn" id="pais_edit" data-type="button" data-inline="true">Editar</button>'
-						+ '<button class="ui-btn" id="pais_delete" data-type="button" data-inline="true">Deletar</button>'
-						+'</li>';
+						html_code += '<li>'
+						+ '<table class="ui-table list-item"><tr>'
+						+ '<td>'  + v.uid + '</td>'
+						+ '<td>'  + v.nome + '</td>'
+						+ '<td>'  + '<button class="ui-btn" id="pais_edit" data-type="button" data-inline="true">Editar</button>' + '</td>'
+						+ '<td>'  + '<button class="ui-btn" id="pais_delete" data-type="button" data-inline="true">Deletar</button>' + '</td>'
+						+ '</tr></table></li>'
 					}
 				});
 				html_code += "</ul>";
