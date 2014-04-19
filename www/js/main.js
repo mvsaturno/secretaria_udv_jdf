@@ -132,6 +132,30 @@ $(function(){
 
 	//Listar UAs
 	
+	/*
+	Países
+	*/
+
+	$("#pais_submit").click(
+		function(event){
+			var data = {
+				'pais_key': $('#pais_key').val(),
+				'pais_nome': $('#pais_nome').val()
+			};
+			console.log(data);
+
+			var opts = {
+				type: 'POST',
+				url:'/app/pais/inserir',
+				dataType:'json',
+				data: data
+			}
+			console.log(opts);
+			$.ajax(opts);
+			//event.preventDefault();
+		});
+
+	//Listar UAs
 });
 
 $(document).on("pageinit", "#ua_menu", function(){
