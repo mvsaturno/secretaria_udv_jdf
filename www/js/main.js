@@ -159,7 +159,6 @@ $(function(){
 		}
 		console.log(opts);
 		$.ajax(opts);
-});
 	}
 
 
