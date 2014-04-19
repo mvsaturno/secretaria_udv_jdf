@@ -218,15 +218,24 @@ $(document).on("pageinit", "#country_menu", function(){
 			dataType:'json',
 			data: data,
 			success: function(res) {
+				console.log('/app/pais/listar result:');
 				console.log(res);
-				var html_code = "<ul id='lista_paises' data-role='listview' data-inset='true'>"
+				//var html_code = "<ul id='lista_paises' data-role='listview' data-inset='true'>"
+				var html_code = ''
 				$.each(res, function(k,v){
-					html_code += "<li><b>" + v.nome_ua + "</b> (" + v.cidade_ua + "-" + v.estado_ua + ")</li>";
+					console.log(k);
+					console.log(v);
+					if (v.uid != 0) {
+						html_code += "<li><b>" + v.uid + "</b>: " + v.nome
+						+ '<button class="ui-btn" id="pais_edit" data-type="button" data-inline="true">Editar</button>'
+						+ '<button class="ui-btn" id="pais_delete" data-type="button" data-inline="true">Deletar</button>'
+						+'</li>';
+					}
 				});
 				html_code += "</ul>";
 				// $(html_code).appendTo('#lista_uas').trigger('create');
-				$('#lista_paises').append(html_code);
-				$('#lista_paises').trigger('create');
+				$('#country_list').append(html_code);
+				$('#country_list').trigger('create');
 			}
 		}
 		console.log(opts);
