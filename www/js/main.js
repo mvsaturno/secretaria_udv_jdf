@@ -136,6 +136,33 @@ $(function(){
 	Países
 	*/
 
+	/*Listar Países (passar o ID do HTML a ser gerado e o ID do elemento a ser populado - 'dest' = placeholder): */
+	function lista_paises(id, dest){
+	console.log('Carregando select de paises');
+	data = {};
+	var opts = {
+			type: 'POST',
+			url:'/app/pais/listar',
+			dataType:'json',
+			data: data,
+			success: function(res) {
+				console.log(res);
+				var html_code = "<select id='"+ id +"' name="+id+">"
+				$.each(res, function(k,v){
+					html_code += "<option value="+v.uid+">" + v.nome + "</option>";
+				});
+				html_code += "</select>";
+				// $(html_code).appendTo('#lista_uas').trigger('create');
+				$(dest).append(html_code);
+				$(dest).trigger('create');
+			}
+		}
+		console.log(opts);
+		$.ajax(opts);
+});
+	}
+
+
 	$("#pais_submit").click(
 		function(event){
 			var data = {
