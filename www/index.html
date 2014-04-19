@@ -26,8 +26,12 @@
 	<div data-role="panel" data-display="reveal" id="globalpanel">
 		<h1>globalpanel</h1>
 		<ul data-role="listview">
-			<li><a href="#main_menu">#main_menu</a></li>
-			<li><a href="#ua_menu">#ua_menu</a></li>
+			<li>
+				<a href="#main_menu">#main_menu</a>
+			</li>
+			<li>
+				<a href="#ua_menu">#ua_menu</a>
+			</li>
 			<li>
 				<a href="#country_menu">#country_menu</a>
 			</li>
@@ -83,7 +87,6 @@
 				
 				<div id="lista_uas">
 					<ul id='lista_nucleos' data-role='list-view' data-inset='true'>
-
 					</ul>
 				</div>
 				
@@ -109,7 +112,6 @@
 		<div data-role="content">
 			<div data-role="control-group" data-type="horizontal">
 				<h1>Países</h1>
-				
 				<label for="pais_key">Código (ISO 3166 alpha 2):</label>
 				<input id="pais_key" name="pais_key"></input>
 				<label for="pais_nome">País:</label>
@@ -161,7 +163,7 @@
 				data-direction="reverse">
 			</input>
 				<h1>Cadastrar UA:</h1>
-			</div> <!-- Header -->
+			</div>
 			<div data-role="content" >
 				<form method="POST" id="form_ua">
 
@@ -174,7 +176,7 @@
 					<label for="nome_ua">Nome do Núcleo/UA</label><input type="text" name="nome_ua" id="nome_ua" />
 					<label for="local_ua">Cidade</label> <input type="text" name="cidade_ua" id="cidade_ua">
 					<label for="estado_ua">Estado</label>
-					<select name="estado_ua">
+				<!-- <select name="estado_ua">
 					    <option value="AC">Acre</option>
 					    <option value="AL">Alagoas</option>
 					    <option value="AM">Amazonas</option>
@@ -202,17 +204,14 @@
 					    <option value="SE">Sergipe</option>
 					    <option value="SP">São Paulo</option>
 					    <option value="TO">Tocantins</option>
-					</select>
+					</select> -->
 					<label for="representante_ua">Nome do M.Representante</label><input type="text" name="representante" id="representante" />
-					<!-- <label for="ua_sist">Essa UA é a principal pra este sistema?</label> <input type="checkbox" name="ua_sist" value="ua_sist" id="ua_sist" /> -->
-					<!-- Aqui vou ter que testar se já existe outra UA marcada com essa opção, antes de persistir no banco -->
 					<input type="hidden" name="uid" id="uid" value="" />
 					<input type="hidden" name="crud" id="crud" value="inserir" />
 					<input type="submit" value="Salvar"/>
 				</form>
 			</div>
 		</div>
-
 
 		<!-- Form para cadastrar discipulos -->
 		<div data-role="page" id="novo_disc">
@@ -235,7 +234,7 @@
 					<label for="bairro">CEP</label><input type="text" id="cep" name="cep" />
 					<label for="cidade">Cidade</label><input type="text" id="cidade" name="cidade" />
 					
-					<label for="estado">Estado</label>
+<!-- 					<label for="estado">Estado</label>
 					<select name="estado">
 					    <option value="AC">Acre</option>
 					    <option value="AL">Alagoas</option>
@@ -264,7 +263,7 @@
 					    <option value="SE">Sergipe</option>
 					    <option value="SP">São Paulo</option>
 					    <option value="TO">Tocantins</option>
-					</select>
+					</select> -->
 
 					<label for="telefone">Telefone Residencial</label> <input type="text" name="telefone" id="telefone" />
 					<label for="telefone1">Telefone Comercial</label> <input type="text" name="telefone1" id="telefone1" />

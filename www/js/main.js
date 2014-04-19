@@ -51,8 +51,6 @@ $(function(){
 		$('#globalpanel').panel('toggle');
 	});
 
-	
-	
 	/*Funções da parte de cadastro de discipulo:*/
 	$("#escolaridade").change(function(){
 		//alert('opcao selecionada:' + $("#escolaridade option:selected").val());
@@ -106,13 +104,10 @@ $(function(){
 	/*
 	Inicializa Formulário
 	*/
-
 	$("#form_ua").submit(
 		function(event){
 			var data = {};
 			$.each($("#form_ua").serializeArray(), function(k,v){ 
-				// console.log(k);
-				// console.log(v);
 				data[v.name] = v.value;
 			});
 
@@ -152,7 +147,6 @@ $(function(){
 					html_code += "<option value="+v.uid+">" + v.nome + "</option>";
 				});
 				html_code += "</select>";
-				// $(html_code).appendTo('#lista_uas').trigger('create');
 				$(dest).append(html_code);
 				$(dest).trigger('create');
 			}
@@ -160,7 +154,6 @@ $(function(){
 		console.log(opts);
 		$.ajax(opts);
 	}
-
 
 	$("#pais_submit").click(
 		function(event){
@@ -178,7 +171,6 @@ $(function(){
 			}
 			console.log(opts);
 			$.ajax(opts);
-			//event.preventDefault();
 		});
 
 	//Listar UAs
@@ -199,7 +191,6 @@ $(document).on("pageinit", "#ua_menu", function(){
 					html_code += "<li><b>" + v.nome_ua + "</b> (" + v.cidade_ua + "-" + v.estado_ua + ")</li>";
 				});
 				html_code += "</ul>";
-				// $(html_code).appendTo('#lista_uas').trigger('create');
 				$('#lista_uas').append(html_code);
 				$('#lista_uas').trigger('create');
 			}
@@ -219,7 +210,6 @@ $(document).on("pageinit", "#country_menu", function(){
 			success: function(res) {
 				console.log('/app/pais/listar result:');
 				console.log(res);
-				//var html_code = "<ul id='lista_paises' data-role='listview' data-inset='true'>"
 				var html_code = ''
 				$.each(res, function(k,v){
 					console.log(k);
@@ -234,8 +224,6 @@ $(document).on("pageinit", "#country_menu", function(){
 						+ '</tr></table></li>'
 					}
 				});
-				html_code += "</ul>";
-				// $(html_code).appendTo('#lista_uas').trigger('create');
 				$('#country_list').append(html_code);
 				$('#country_list').trigger('create');
 			}
@@ -246,5 +234,4 @@ $(document).on("pageinit", "#country_menu", function(){
 
 $(document).on("pageinit", "#main_menu", function(){
 	console.log('carregou main_menu !');
-	//$('#globalpanel').panel();
 });

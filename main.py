@@ -85,6 +85,7 @@ class PaisHandler(webapp2.RequestHandler):
 		logging.info(pais_key)
 		logging.info(data)
 		key = ndb.Key('pais', '0', 'pais', pais_key)
+        # key do estado, pais vai ser o codigo do pais (dois primeiros valores); depois o nome do estado, aí eu vinculo um estado num país ancestral
 		obj.key = key
     		CrudHandler(obj, data)
     		res = 'objeto inserido!'
