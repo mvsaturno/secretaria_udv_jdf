@@ -85,7 +85,8 @@ class PaisHandler(webapp2.RequestHandler):
 		logging.info(pais_key)
 		logging.info(data)
 		key = ndb.Key('pais', '0', 'pais', pais_key)
-        # key do estado, pais vai ser o codigo do pais (dois primeiros valores); depois o nome do estado, aí eu vinculo um estado num país ancestral
+        # key do estado, pais vai ser o codigo do pais (dois primeiros valores);
+        # depois o nome do estado, aí eu vinculo um estado num país ancestral
 		obj.key = key
     		CrudHandler(obj, data)
     		res = 'objeto inserido!'
@@ -136,7 +137,7 @@ class UaHandler(webapp2.RequestHandler):
 def CrudHandler(obj,data):
 	logging.info('CrudHandler')
 	logging.info(data)
-	#Gravar UM elemento no banco
+	# Gravar UM elemento no banco
 	# data = getPostData(req.POST.items())
 	for p,v in data.iteritems():
 	    # logging.info(p)

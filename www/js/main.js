@@ -1,44 +1,5 @@
-//Definindo um Núcleo (UA):
-
-/*
-Endereço (região)
-	M.Representante
-	"parentesco" com outra UA (opcional)
-	Lista de Discipulos
-*/
-
-function Nucleo(nome, endereco, representante, lista_discipulos, parentesco){
-	this.nome = nome;
-	this.endereco = endereco;
-	this.representante = representante;
-	this.lista_discipulos = lista_discipulos;
-	this.parentesco = parentesco; //passar um array com tipo de parentesco e nome da UA
-
-	function setEndereco(end)
-	{
-	this.endereco=end;
-	}
-}
-
-function Discipulo (nome, endereco, telefone, email, nascimento, escolaridade, pai, mae){
-	this.nome = nome;
-	this.endereco = endereco;
-	this.telefone = telefone;
-	this.email = email;
-	this.nascimento = nascimento;
-	this.escolaridade = escolaridade;
-	this.pai = pai;
-	this.mae = mae;
-}
-
-function Grau( discipulo, evento, grau ){
-
-}
-
 /*Jquery:*/
-
 $(function(){
-
 	console.log('init.js loaded.');
 	
 	$('#globalpanel').panel();
@@ -53,10 +14,7 @@ $(function(){
 
 	/*Funções da parte de cadastro de discipulo:*/
 	$("#escolaridade").change(function(){
-		//alert('opcao selecionada:' + $("#escolaridade option:selected").val());
-	
 		var opcao = $("#escolaridade option:selected").val();
-
 		if (opcao === 'sup_inc' || opcao === 'sup_comp') { 
 			if ($('#div_curso').css('display') === 'none') {
 				$('#div_curso').fadeIn(); 
@@ -142,7 +100,7 @@ $(function(){
 			data: data,
 			success: function(res) {
 				console.log(res);
-				var html_code = "<select id='"+ id +"' name="+id+">"
+				var html_code = "<select id='"+ id +"' name="+id+">";
 				$.each(res, function(k,v){
 					html_code += "<option value="+v.uid+">" + v.nome + "</option>";
 				});
@@ -155,6 +113,9 @@ $(function(){
 		$.ajax(opts);
 	}
 
+	 /*Função de editar os países*/
+
+
 	$("#pais_submit").click(
 		function(event){
 			var data = {
@@ -165,7 +126,7 @@ $(function(){
 
 			var opts = {
 				type: 'POST',
-				url:'/app/pais/inserir_ancestral',
+				url:'/app/pais/inserir',
 				dataType:'json',
 				data: data
 			}
@@ -186,7 +147,7 @@ $(document).on("pageinit", "#ua_menu", function(){
 			data: data,
 			success: function(res) {
 				console.log(res);
-				var html_code = "<ul id='lista_nucleos' data-role='listview' data-inset='true'>"
+				var html_code = "<ul id='lista_nucleos' data-role='listview' data-inset='true'>";
 				$.each(res, function(k,v){
 					html_code += "<li><b>" + v.nome_ua + "</b> (" + v.cidade_ua + "-" + v.estado_ua + ")</li>";
 				});
@@ -210,20 +171,23 @@ $(document).on("pageinit", "#country_menu", function(){
 			success: function(res) {
 				console.log('/app/pais/listar result:');
 				console.log(res);
-				var html_code = ''
+				var html_code = '';
+				html_code += '<li>'
+					+ '<table class="ui-table list-item">'
+					+ '<tr><td colspan="1"><b>Codigo</b></td><td colspan="1"><b>País</b></td><td colspan="2"></td></tr>';
 				$.each(res, function(k,v){
 					console.log(k);
 					console.log(v);
 					if (v.uid != 0) {
-						html_code += '<li>'
-						+ '<table class="ui-table list-item"><tr>'
-						+ '<td>'  + v.uid + '</td>'
-						+ '<td>'  + v.nome + '</td>'
-						+ '<td>'  + '<button class="ui-btn" id="pais_edit" data-type="button" data-inline="true">Editar</button>' + '</td>'
-						+ '<td>'  + '<button class="ui-btn" id="pais_delete" data-type="button" data-inline="true">Deletar</button>' + '</td>'
-						+ '</tr></table></li>'
+						html_code += '<tr>'
+						+ '<td class="codigo">'  + v.uid + '</td>'
+						+ '<td class="nome">'  + v.nome + '</td>'
+						+ '<td>'  + '<button class="ui-btn pais_edit" id="'+v.uid+'_edit" data-type="button" data-inline="true">Editar</button>' + '</td>'
+						+ '<td>'  + '<button class="ui-btn pais_delete" id="'+v.uid+'_delete" data-type="button" data-inline="true">Deletar</button>' + '</td>'
+						+ '</tr>';
 					}
 				});
+				html_code += '</table></li>';
 				$('#country_list').append(html_code);
 				$('#country_list').trigger('create');
 			}
