@@ -211,11 +211,13 @@ var SecretariaUDV = {
 		var id_menu = "#main_menu";
 		var country_menu = "#country_menu";
 		var ua_menu = "#ua_menu";
+		var uf_menu = "#uf_menu";
 
 		//inicialização dos métodos:
 		this.carregouMenu(id_menu);
 		this.carregouCountryMenu(country_menu);
 		this.carregouUAMenu(ua_menu);
+		//this.carregouUFMenu(uf_menu);
 		this.createPanel(id_panel);
 		this.observeEscolaridadeDiscipulo(escolaridade);
 		this.observeTransfSocio(transferencia);

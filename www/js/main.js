@@ -196,6 +196,41 @@ $(document).on("pageinit", "#country_menu", function(){
 		$.ajax(opts);
 });
 
+$(document).on("pageinit", "#uf_menu", function(){
+	console.log('carregou #uf_menu!');
+	data = {};
+	var opts = {
+			type: 'POST',
+			url:'/app/uf/listar',
+			dataType:'json',
+			data: data,
+			success: function(res) {uf/listar result:');
+				console.log(res);
+				var html_code = '';
+				html_code += '<li>'
+					+ '<table class="ui-table list-item">'
+					+ '<tr><td colspan="1"><b>Sigla</b></td><td colspan="1"><b>Estado</b></td><td colspan="2"></td></tr>';
+				$.each(res, function(k,v){
+					console.log(k);
+					console.log(v);
+					if (v.uid != 0) {
+						html_code += '<tr>'
+						+ '<td class="codigo">'  + v.uid + '</td>'
+						+ '<td class="nome">'  + v.nome + '</td>'
+						+ '<td>'  + '<button class="ui-btn pais_edit" id="'+v.uid+'_edit" data-type="button" data-inline="true">Editar</button>' + '</td>'
+						+ '<td>'  + '<button class="ui-btn pais_delete" id="'+v.uid+'_delete" data-type="button" data-inline="true">Deletar</button>' + '</td>'
+						+ '</tr>';
+					}
+				});
+				html_code += '</table></li>';
+				$('#uf_list').append(html_code);
+				$('#uf_list').trigger('create');
+			}
+		}
+		console.log(opts);
+		$.ajax(opts);
+});
+
 $(document).on("pageinit", "#main_menu", function(){
 	console.log('carregou main_menu !');
 });

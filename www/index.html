@@ -35,7 +35,7 @@
 				<a href="#country_menu">#country_menu</a>
 			</li>
 			<li>
-				<a href="#country_menu">#uf_menu</a>
+				<a href="#uf_menu">#uf_menu</a>
 			</li>
 			<li>
 				<a href="#country_menu">#regioes_menu</a>
@@ -120,6 +120,40 @@
 			</div>
 			<div data-role="content">
 			<ul id="country_list" data-role="listview"></ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Menu dos estados-->
+	<div data-role="page" id="uf_menu" data-animate="false" data-transition="none" data-tap-toggle="false">
+
+		<div data-role="header" data-id="main-header" data-position="fixed" data-tap-toggle="false">
+			<input type="button" data-id="navbtn"
+				data-role="button"
+				data-icon="bars"
+				data-iconpos="notext"
+				data-inline="true"
+				data-transition="slide"
+				data-direction="reverse">
+			</input>
+			<h1>Estados</h1>
+		</div>
+
+		<div data-role="content">
+			<div data-role="control-group" data-type="horizontal">
+				<h1>Estados</h1>
+				<form id="form_uf" method="POST">
+					<label for="uf_country_key">País:</label>
+					<select id="uf_country_key" name="uf_country_key"></select>
+					<label for="uf_key">Sigla:</label>
+					<input id="uf_key" name="uf_key"></input>
+					<label for="uf_nome">Estado:</label>
+					<input id="uf_nome" name="uf_nome"></input>
+					<input type="submit" class="ui-btn" id="uf_submit" value="Salvar" />
+				</form>
+			</div>
+			<div data-role="content">
+			<ul id="uf_list" data-role="listview"></ul>
 			</div>
 		</div>
 	</div>
