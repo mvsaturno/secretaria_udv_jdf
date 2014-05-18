@@ -4,6 +4,33 @@ $(document).ready(function() {
 
 var SecretariaUDV = {
 
+	/*Listar Países (passar o ID do HTML a ser gerado e o ID do elemento a ser populado - 'dest' = placeholder): */
+	lista_paises: function (id, dest){
+	console.log('Carregando select de paises');
+	data = {};
+	var opts = {
+			type: 'POST',
+			url:'/app/pais/listar',
+			dataType:'json',
+			data: data,
+			success: function(res) {
+				console.log(res);
+				var html_code = "<select id='"+ id +"' name="+id+">";
+				$.each(res, function(k,v){
+					html_code += "<option value="+v.uid+">" + v.nome + "</option>";
+				});
+				html_code += "</select>";
+				console.log(html_code);
+				console.log(dest);
+				console.log($(dest));
+				$(dest).append(html_code);
+				$(dest).trigger('create');
+			}
+		}
+		console.log(opts);
+		$.ajax(opts);
+	},
+
 	submitInputs: function(obj, url_dest){
 		console.log('Objeto: ');
 		console.log(obj);
@@ -169,6 +196,59 @@ var SecretariaUDV = {
 		}.bind(this));
 	},
 
+	carregouUFMenu: function(uf_menu){
+	$(document).on("pageinit", uf_menu, function(){
+
+		//Essa função aqui define praonde vai o form quando o usuário da o submit:
+		$(uf_menu).find('form').on('submit', function(e){
+			e.preventDefault();
+			var inserir_uf = $("#form_uf");
+			//método submitInputs dentro desse mesmo objeto (primeira função lá em cima):
+			this.submitInputs(inserir_uf, '/app/uf/inserir');
+		}.bind(this));
+
+		console.log('carregou #uf_menu!');
+		this.lista_paises('uf_country_key', '#uf_country_key_container');
+		data = {};
+		var opts = {
+				type: 'POST',
+				url:'/app/uf/listar',
+				dataType:'json',
+				data: data,
+				success: function(res) {
+					console.log('/app/uf/listar result:');
+					console.log(res);
+					var html_code = '';
+					html_code += '<li>'
+						+ '<table class="ui-table list-item">'
+						+ '<tr><td colspan="1"><b>Codigo</b></td><td colspan="1"><b>UF</b></td><td colspan="2"></td></tr>';
+					$.each(res, function(k,v){
+						console.log(k);
+						console.log(v);
+						if (v.uid != 0) {
+							html_code += '<tr id="'+ v.uid +'">'
+							+ '<td class="codigo">'  + v.uid + '</td>'
+							+ '<td class="nome">'  + v.nome + '</td>'
+							+ '<td>'  + '<button class="ui-btn uf_edit" id="'+v.uid+'_edit" data-type="button" data-inline="true">Editar</button>' + '</td>'
+							+ '<td>'  + '<button class="ui-btn uf_delete" id="'+v.uid+'_delete" data-type="button" data-inline="true">Deletar</button>' + '</td>'
+							+ '</tr>';
+						}
+					});
+					html_code += '</table></li>';
+					$('#uf_list').append(html_code);
+					$('#uf_list').trigger('create');
+
+					//Precisa definir essa função aqui dentro pq se definir fora ela 
+					// vai ser lida antes do Ajax rodar e não vai ter o objeto (li) pra fazer o tracking
+					this.editStuff($('.uf_edit'));
+				}.bind(this)
+			}
+			console.log(opts);
+			$.ajax(opts);
+
+		}.bind(this));
+	},
+	
 	carregouUAMenu: function(ua_menu){
 	$(document).on("pageinit", ua_menu, function(){
 
@@ -217,7 +297,7 @@ var SecretariaUDV = {
 		this.carregouMenu(id_menu);
 		this.carregouCountryMenu(country_menu);
 		this.carregouUAMenu(ua_menu);
-		//this.carregouUFMenu(uf_menu);
+		this.carregouUFMenu(uf_menu);
 		this.createPanel(id_panel);
 		this.observeEscolaridadeDiscipulo(escolaridade);
 		this.observeTransfSocio(transferencia);
